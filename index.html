@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devia Software | Desarrollo de Software</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="fixed-background"></div>
+  <div class="fixed-overlay"></div>
+
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-d">D</span>
+      <span class="logo-text">DEVIA</span>
+    </div>
+    <nav>
+      <button onclick="goToSlide(0)">Inicio</button>
+      <button onclick="goToSlide(1)">Servicios</button>
+      <button onclick="goToSlide(2)">Nosotros</button>
+      <button onclick="goToSlide(3)">Contacto</button>
+    </nav>
+  </header>
+
+  <button class="nav-btn prev-btn" id="prevBtn" aria-label="Anterior">&lt;</button>
+  <button class="nav-btn next-btn" id="nextBtn" aria-label="Siguiente">&gt;</button>
+
+  <div class="horizontal-container" id="slider">
+
+    <section class="section hero-section">
+      <div class="hero-content">
+        <p class="tagline">DESARROLLO DE SOFTWARE</p>
+        <h1> Impulsamos tu rubro,<span class="highlight"> programamos tu solución</span></h1>
+        <p class="subtitle">Desarrollamos soluciones digitales a medida, funcionales, seguras y pensadas para hacer crecer tus proyectos.</p>
+        <button class="btn-primary" onclick="goToSlide(1)">Explorar Servicios &rarr;</button>
+      </div>
+    </section>
+
+    <section class="section services-section">
+      <div class="section-header">
+        <h2>Nuestros <span class="highlight">Servicios</span></h2>
+        <p>Soluciones tecnológicas estructuradas a tu medida.</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="badge available">Disponible </div>
+          <h3>Landing Page</h3>
+          <ul class="service-list">
+            <li>Diseño one-page responsivo.</li>
+            <li>Secciones principales (Inicio, Servicios, Contacto).</li>
+            <li>Formulario rápido de contacto y botón a WhatsApp.</li>
+          </ul>
+          <button class="btn-consult" onclick="selectServiceAndGo('Landing Page')">Consultar</button>
+        </div>
+
+        <div class="service-card">
+          <div class="badge available">Disponible </div>
+          <h3>Sitio Web Profesional</h3>
+          <ul class="service-list">
+            <li>Estructura multipágina fluida.</li>
+            <li>Optimización SEO básica y velocidad.</li>
+            <li>Integración completa con redes sociales.</li>
+          </ul>
+          <button class="btn-consult" onclick="selectServiceAndGo('Sitio Web Profesional')">Consultar</button>
+        </div>
+
+        <div class="service-card">
+          <div class="badge available">Disponible </div>
+          <h3>Tienda Online</h3>
+          <ul class="service-list">
+            <li>Catálogo estructurado por categorías.</li>
+            <li>Tarjetas dinámicas con imágenes y precios.</li>
+            <li>Botones de compra / consulta por producto.</li>
+          </ul>
+          <button class="btn-consult" onclick="selectServiceAndGo('Tienda Online')">Consultar</button>
+        </div>
+
+        <div class="service-card">
+          <div class="badge available">Disponible </div>
+          <h3>Mini App Web</h3>
+          <ul class="service-list">
+            <li>Interacciones dinámicas con React / JS.</li>
+            <li>Lógica a medida según requerimiento.</li>
+            <li>Interfaces de alta velocidad.</li>
+          </ul>
+          <button class="btn-consult" onclick="selectServiceAndGo('Mini App Web')">Consultar</button>
+        </div>
+
+        <div class="service-card">
+          <div class="badge available">Disponible </div>
+          <h3>Sistemas a Medida</h3>
+          <ul class="service-list">
+            <li>Desarrollo Backend y Frontend estructurado.</li>
+            <li>Gestión de bases de datos y usuarios.</li>
+            <li>Arquitectura escalable y segura.</li>
+          </ul>
+          <button class="btn-consult" onclick="selectServiceAndGo('Sistemas a Medida')">Consultar</button>
+        </div>
+
+        <div class="service-card disabled">
+          <div class="badge upcoming">Próximamente ⏳</div>
+          <h3>Automatización e IA</h3>
+          <p class="disabled-text">No disponible por el momento.</p>
+        </div>
+      </div>
+      
+      <p class="mobile-apps-note">📱 <em>Próximamente: Apps Móviles</em></p>
+    </section>
+
+    <section class="section about-section">
+      <div class="about-container">
+        <h2>Sobre <span class="highlight">Devia Soft</span></h2>
+        <p class="purpose">"Construimos el futuro, línea a línea."</p>
+        <p class="about-text">
+          En Devia Software impulsamos el crecimiento de negocios y emprendimientos desarrollando soluciones digitales adaptadas a las necesidades específicas de cada rubro. Nos enfocamos en crear software funcional, intuitivo y eficiente —desde plataformas web hasta sistemas a medida— transformando ideas complejas en tecnología accesible que optimiza la presencia digital de cada cliente.
+        </p>
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="contact-card">
+        <h2>Iniciemos tu <span class="highlight">Proyecto</span></h2>
+        <form id="contactForm" onsubmit="sendToWhatsApp(event)">
+          <div class="form-group">
+            <label for="email">Correo Electrónico *</label>
+            <input type="email" id="email" required placeholder="tu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="serviceSelect">Servicio que buscas *</label>
+            <select id="serviceSelect" required>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option value="Landing Page">Landing Page</option>
+              <option value="Sitio Web Profesional">Sitio Web Profesional</option>
+              <option value="Tienda Online">Tienda Online</option>
+              <option value="Mini App Web">Mini App Web</option>
+              <option value="Sistemas a Medida">Sistemas a Medida</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="budgetSelect">Presupuesto estimado *</label>
+            <select id="budgetSelect" required>
+              <option value="" disabled selected>Selecciona un rango</option>
+              <option value="Básico ($50k - $150k)">Básico ($80 - $150)</option>
+              <option value="Intermedio ($150k - $300k)">Intermedio ($250 - $500)</option>
+              <option value="Avanzado / A medida (+$300k)">Avanzado / A medida (+$500)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Breve descripción *</label>
+            <textarea id="description" rows="3" required placeholder="Contame brevemente sobre tu negocio..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-whatsapp">Enviar a WhatsApp </button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
